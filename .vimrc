@@ -48,3 +48,64 @@ Plugin 'kien/ctrlp.vim'
 " Plugin 'SirVer/ultisnips'
 " Plugin 'honza/vim-snippets'
 " let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+
+" If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="vertical"
+
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList          - list configured plugins
+" :PluginInstall(!)    - install (update) plugins
+" :PluginSearch(!) foo - search (or refresh cache first) for foo
+" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+
+" Remember last position
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
+"
+"set omnifunc=syntaxcomplete#Complete    
+"set completeopt=longest,menu
+let g:gofmt_command = "goimports"
+autocmd BufWritePre *.go :Fmt
+
+let g:neocomplete#enable_at_startup = 1
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+syntax on
+colorscheme molokai
+set t_Co=256
+set showcmd
+set ruler
+" enable backspace
+set backspace=indent,eol,start
+set nu
+"highlight LineNr ctermfg=black
+"highlight LineNr ctermbg=white
+set mouse=
+set ts=4 sts=4 sw=4
+set encoding=utf-8
+" set expandtab
+"
+set completeopt=longest,menu 
+autocmd Filetype python set ts=4 sts=4 expandtab
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+
+map <C-m> :NERDTreeToggle<CR>
+
